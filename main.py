@@ -1,4 +1,5 @@
 from generator import generate_characters
+from cardmaker_exporter import export
 import pprint
 
 print("Welcome to the NPC Generator")
@@ -18,6 +19,18 @@ if choice_atts == 2:
         if input_att != "QUIT":
             user_supplied_attributes.append(input_att)
 
-characters = generate_characters(num_chars, user_supplied_attributes)
+finalized = False
 pp = pprint.PrettyPrinter()
-pp.pprint(characters)
+
+while not finalized:
+    characters = generate_characters(num_chars, user_supplied_attributes)
+    pp.pprint(characters)
+    print("Are you happy with these results?")
+    print("1. Yeah, I'm happy with these")
+    print("2. No, I want to reroll them")
+    choice_fin = int(input("Please enter your choice: "))
+
+    if choice_fin == 1:
+        finalized = True
+
+export(characters)
