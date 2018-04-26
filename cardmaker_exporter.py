@@ -5,10 +5,9 @@ def export(data):
     fieldnames = ['Quantity']
     for key in sample_data:
         fieldnames.append(key)
-    with open('exported_file.csv', newline='') as csv_file:
+    with open('exported_file.csv', 'w', newline='') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-        writer.writeheader()
+        csv_writer.writeheader()
         for dictionary in data:
             dictionary['Quantity'] = 1
-            writer.writerow(dictionary)
-            
+            csv_writer.writerow(dictionary)

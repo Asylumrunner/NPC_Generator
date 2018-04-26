@@ -33,4 +33,12 @@ while not finalized:
     if choice_fin == 1:
         finalized = True
 
+for character in characters:
+    traits = character.pop('Traits')
+    for x in range(len(traits)):
+        character['Trait_{}'.format(x)] = traits[x]
+    attributes = character.pop('Attributes')
+    for y in range(len(attributes)):
+        character['Attribute_{}'.format(y)] = attributes[y]
+
 export(characters)
