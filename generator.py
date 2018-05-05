@@ -41,6 +41,9 @@ def generate_names(number, region=''):
     req = requests.get(request_string)
     names = req.json()
 
+    if isinstance(names, dict):
+        names = [names]
+
     name_list = []
     for person in names:
         full_name = unidecode("{} {}".format(person['name'], person['surname']))
